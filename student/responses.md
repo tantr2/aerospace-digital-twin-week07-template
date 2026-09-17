@@ -8,11 +8,11 @@ Answers and recorded model results from `submission.json`. This document does no
 
 - Record ID: c56f84d0-44af-47ec-81d0-ed0b0146e40d
 
-- Record revision: 46
+- Record revision: 285
 
 - Model hash: fnv1a-be327008
 
-- Readiness: Marked incomplete or not ready; missing: claim, reflection, aiUse
+- Readiness: Marked ready by the submission.
 
 ## Supplied setup (instructor supplied)
 
@@ -84,19 +84,25 @@ q = 980 Pa
 **Prompt:** What do your computed results support at the stated condition? Include a limitation.
 
 **Student response:**
-_Missing — no response supplied._
+```
+The model gives an achieved pitch acceleration of 0.1784 rad/s^2, which is higher than the requested 0.12 rad/s^2. This means the -5 deg elevator produces more nose-up moment than required at 40 m/s. One limitation is that the model assumes a linear elevator response and does not include aerodynamic damping or trim.
+```
 
 ### reflection
 **Prompt:** What additional evidence or missing physics would you investigate next?
 
 **Student response:**
-_Missing — no response supplied._
+```
+I would investigate how aerodynamic damping and trim affect the pitch response. I would also test different airspeeds and elevator angles to see when my linear assumption starts to become inaccurate.
+```
 
 ### AI use
 **Prompt:** Identify the AI tool and how you used it, what you changed, and how you independently checked the result. State “No AI used” if applicable.
 
 **Student response:**
-_Missing — no response supplied._
+```
+I used ChatGPT to help me understand the equations and create the structured JSON expressions, as some of the instructions were confusing to me. I changed the explanations to match my own understanding and the results I observed. I independently checked the dynamic pressure by hand using 0.5 x 1.225 x 40^2 = 980 Pa, which matched the model result. I also used ChatGPT to help fix my grammar and English after writing my responses, without changing the engineering content of my work.
+```
 
 ## Equations and model source
 
