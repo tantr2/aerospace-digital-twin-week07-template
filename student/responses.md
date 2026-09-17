@@ -8,11 +8,11 @@ Answers and recorded model results from `submission.json`. This document does no
 
 - Record ID: c56f84d0-44af-47ec-81d0-ed0b0146e40d
 
-- Record revision: 9
+- Record revision: 17
 
 - Model hash: fnv1a-adee3cf8
 
-- Readiness: Marked incomplete or not ready; missing: prediction, verification, claim, reflection, aiUse, execution
+- Readiness: Marked incomplete or not ready; missing: verification, claim, reflection, aiUse, execution
 
 ## Supplied setup (instructor supplied)
 
@@ -58,7 +58,9 @@ The demand model states that the control moment plus the competing moment must e
 **Prompt:** Before running your own implementation, predict the sign of its elevator moment and the effect of halving airspeed. Explain the competing moment.
 
 **Student response:**
-_Missing — no response supplied._
+```
+I predict the elevator moment will be positive, meaning nose up, because the negative elevator angle and negative elevator effectiveness produce a positive moment. If the airspeed is halved, the elevator moment should become on quarter as large because it depends on the square of airspeed. The competing moment is negative, so it produces a nose down moment that the elevator must overcome.
+```
 
 ### verification
 **Prompt:** Show one independent hand calculation with units. Compare it with your model, and explain a sign, unit, or limiting-case check.

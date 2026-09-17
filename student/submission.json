@@ -3,7 +3,6 @@
   "readiness": {
     "ready": false,
     "missing": [
-      "prediction",
       "verification",
       "claim",
       "reflection",
@@ -13,7 +12,7 @@
   },
   "record": {
     "id": "c56f84d0-44af-47ec-81d0-ed0b0146e40d",
-    "revision": "9",
+    "revision": "17",
     "model": {
       "moduleId": "controls",
       "modelId": "week07-student-model",
@@ -60,7 +59,7 @@
       "prediction": {
         "suppliedBy": "student",
         "locked": false,
-        "text": ""
+        "text": "I predict the elevator moment will be positive, meaning nose up, because the negative elevator angle and negative elevator effectiveness produce a positive moment. If the airspeed is halved, the elevator moment should become on quarter as large because it depends on the square of airspeed. The competing moment is negative, so it produces a nose down moment that the elevator must overcome."
       },
       "execution": {
         "suppliedBy": "automatic",
