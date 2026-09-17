@@ -3,23 +3,21 @@
   "readiness": {
     "ready": false,
     "missing": [
-      "verification",
       "claim",
       "reflection",
-      "aiUse",
-      "execution"
+      "aiUse"
     ]
   },
   "record": {
     "id": "c56f84d0-44af-47ec-81d0-ed0b0146e40d",
-    "revision": "17",
+    "revision": "46",
     "model": {
       "moduleId": "controls",
-      "modelId": "week07-student-model",
+      "modelId": "week07-controls-model",
       "version": "1.0.0"
     },
-    "modelText": "{\n  \"schemaVersion\": \"week07.student-model/v1\",\n  \"id\": \"week07-student-model\",\n  \"version\": \"1.0.0\",\n  \"slots\": [\n    {\n      \"id\": \"controls.demand\",\n      \"expressions\": [\n        {\n          \"name\": \"requiredMoment\",\n          \"expression\": \"\",\n          \"unit\": \"N*m\"\n        }\n      ]\n    },\n    {\n      \"id\": \"controls.effectiveness\",\n      \"expressions\": [\n        {\n          \"name\": \"dynamicPressure\",\n          \"expression\": \"\",\n          \"unit\": \"Pa\"\n        },\n        {\n          \"name\": \"deltaCm\",\n          \"expression\": \"\",\n          \"unit\": \"1\"\n        },\n        {\n          \"name\": \"deltaMoment\",\n          \"expression\": \"\",\n          \"unit\": \"N*m\"\n        }\n      ]\n    }\n  ]\n}",
-    "modelHash": "fnv1a-adee3cf8",
+    "modelText": "{\n  \"schemaVersion\": \"week07.student-model/v1\",\n  \"id\": \"week07-controls-model\",\n  \"version\": \"1.0.0\",\n  \"slots\": [\n    {\n      \"id\": \"controls.demand\",\n      \"expressions\": [\n        {\n          \"name\": \"requiredMoment\",\n          \"expression\": \"pitchInertia * requestedAcceleration - competingMoment\",\n          \"unit\": \"N*m\"\n        }\n      ]\n    },\n    {\n      \"id\": \"controls.effectiveness\",\n      \"expressions\": [\n        {\n          \"name\": \"dynamicPressure\",\n          \"expression\": \"0.5 * density * airspeed * airspeed\",\n          \"unit\": \"Pa\"\n        },\n        {\n          \"name\": \"deltaCm\",\n          \"expression\": \"elevatorDerivative * elevatorAngle\",\n          \"unit\": \"1\"\n        },\n        {\n          \"name\": \"deltaMoment\",\n          \"expression\": \"dynamicPressure * referenceArea * referenceChord * deltaCm\",\n          \"unit\": \"N*m\"\n        }\n      ]\n    }\n  ]\n}",
+    "modelHash": "fnv1a-be327008",
     "fields": {
       "question": {
         "suppliedBy": "instructor",
@@ -69,7 +67,7 @@
       "verification": {
         "suppliedBy": "student",
         "locked": false,
-        "text": ""
+        "text": "q = 0.5pV^2\n\nq = 0.5 × 1.225 kg/m^3 × (40 m/s)^2\n\nq = 0.5 × 1.225 × 1600\n\nq = 980 kg/(m·s^2)\n\nq = 980 Pa\n\n980 Pa, which matches the model result of 980 Pa. If the airspeed becomes zero, the dynamic pressure will also become zero, so the elevator will produce no aerodynamic moment."
       },
       "claim": {
         "suppliedBy": "student",
@@ -90,7 +88,7 @@
   },
   "model": {
     "schemaVersion": "week07.student-model/v1",
-    "id": "week07-student-model",
+    "id": "week07-controls-model",
     "version": "1.0.0",
     "slots": [
       {
@@ -98,7 +96,7 @@
         "expressions": [
           {
             "name": "requiredMoment",
-            "expression": "",
+            "expression": "pitchInertia * requestedAcceleration - competingMoment",
             "unit": "N*m"
           }
         ]
@@ -108,23 +106,441 @@
         "expressions": [
           {
             "name": "dynamicPressure",
-            "expression": "",
+            "expression": "0.5 * density * airspeed * airspeed",
             "unit": "Pa"
           },
           {
             "name": "deltaCm",
-            "expression": "",
+            "expression": "elevatorDerivative * elevatorAngle",
             "unit": "1"
           },
           {
             "name": "deltaMoment",
-            "expression": "",
+            "expression": "dynamicPressure * referenceArea * referenceChord * deltaCm",
             "unit": "N*m"
           }
         ]
       }
     ]
   },
-  "runs": [],
-  "verification": null
+  "runs": [
+    {
+      "id": "39bb0cfe-b589-43db-835e-84dff9a6c47b",
+      "createdAt": "2026-09-17T03:59:35.413Z",
+      "record": {
+        "id": "c56f84d0-44af-47ec-81d0-ed0b0146e40d",
+        "revision": "23",
+        "model": {
+          "moduleId": "controls",
+          "modelId": "week07-controls-model",
+          "version": "1.0.0"
+        },
+        "modelText": "{\n  \"schemaVersion\": \"week07.student-model/v1\",\n  \"id\": \"week07-controls-model\",\n  \"version\": \"1.0.0\",\n  \"slots\": [\n    {\n      \"id\": \"controls.demand\",\n      \"expressions\": [\n        {\n          \"name\": \"requiredMoment\",\n          \"expression\": \"pitchInertia * requestedAcceleration - competingMoment\",\n          \"unit\": \"N*m\"\n        }\n      ]\n    },\n    {\n      \"id\": \"controls.effectiveness\",\n      \"expressions\": [\n        {\n          \"name\": \"dynamicPressure\",\n          \"expression\": \"0.5 * density * airspeed * airspeed\",\n          \"unit\": \"Pa\"\n        },\n        {\n          \"name\": \"deltaCm\",\n          \"expression\": \"elevatorDerivative * elevatorAngle\",\n          \"unit\": \"1\"\n        },\n        {\n          \"name\": \"deltaMoment\",\n          \"expression\": \"dynamicPressure * referenceArea * referenceChord * deltaCm\",\n          \"unit\": \"N*m\"\n        }\n      ]\n    }\n  ]\n}",
+        "modelHash": "fnv1a-be327008",
+        "fields": {
+          "question": {
+            "suppliedBy": "instructor",
+            "locked": true,
+            "text": "Calculate required control moment, elevator moment, and the change with airspeed. Explain whether the nominal response meets +0.12 rad/s²."
+          },
+          "system": {
+            "suppliedBy": "instructor",
+            "locked": true,
+            "text": "Illustrative planar pitch model. Aircraft geometry, integration, force conversion and constraints are supplied."
+          },
+          "representation": {
+            "suppliedBy": "instructor",
+            "locked": true,
+            "text": "Body axes forward/right/down. Positive pitch moment nose-up. Positive Fz downward. Positive elevator trailing edge down. Reference/CG X=0 m; tail X=-3 m."
+          },
+          "physics": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": "A downward force behind the CG pushes the tail down, causing the nose to rotate upward. Since the sign convention defines nose up moment as positive, this produces a positive pitch moment."
+          },
+          "assumptions": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": "One assumption is that the elevator response is linear, meaning the change in pitching moment is proportional to the elevator angle. This may not be true at large elevator angles or near stall because the airflow becomes nonlinear."
+          },
+          "inputs": {
+            "suppliedBy": "instructor",
+            "locked": true,
+            "text": "Iy=5000 kg·m²; target=+0.12 rad/s²; competing=-750 N-m; density=1.225 kg/m³; V=40 m/s; S=16 m²; chord=1.5 m; Cmδ=-0.8/rad; elevator=-5°. Inputs are illustrative, not calibrated."
+          },
+          "model": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": "The demand model states that the control moment plus the competing moment must equal the moment needed to achieve the target pitch acceleration. Dynamic pressure depends on air density and the square of airspeed, while the elevator moment depends on dynamic pressure, wing area, chord, elevator effectiveness, and elevator angle. All of these values are supplied, while the required control moment and actual elevator moment are the values that need to be calculated."
+          },
+          "prediction": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": "I predict the elevator moment will be positive, meaning nose up, because the negative elevator angle and negative elevator effectiveness produce a positive moment. If the airspeed is halved, the elevator moment should become on quarter as large because it depends on the square of airspeed. The competing moment is negative, so it produces a nose down moment that the elevator must overcome."
+          },
+          "execution": {
+            "suppliedBy": "automatic",
+            "locked": false,
+            "text": ""
+          },
+          "verification": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": ""
+          },
+          "claim": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": ""
+          },
+          "reflection": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": ""
+          },
+          "aiUse": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": ""
+          }
+        }
+      },
+      "prediction": "I predict the elevator moment will be positive, meaning nose up, because the negative elevator angle and negative elevator effectiveness produce a positive moment. If the airspeed is halved, the elevator moment should become on quarter as large because it depends on the square of airspeed. The competing moment is negative, so it produces a nose down moment that the elevator must overcome.",
+      "artifact": {
+        "schemaVersion": "week07.student-model/v1",
+        "id": "week07-controls-model",
+        "version": "1.0.0",
+        "slots": [
+          {
+            "id": "controls.demand",
+            "expressions": [
+              {
+                "name": "requiredMoment",
+                "expression": "pitchInertia * requestedAcceleration - competingMoment",
+                "unit": "N*m"
+              }
+            ]
+          },
+          {
+            "id": "controls.effectiveness",
+            "expressions": [
+              {
+                "name": "dynamicPressure",
+                "expression": "0.5 * density * airspeed * airspeed",
+                "unit": "Pa"
+              },
+              {
+                "name": "deltaCm",
+                "expression": "elevatorDerivative * elevatorAngle",
+                "unit": "1"
+              },
+              {
+                "name": "deltaMoment",
+                "expression": "dynamicPressure * referenceArea * referenceChord * deltaCm",
+                "unit": "N*m"
+              }
+            ]
+          }
+        ]
+      },
+      "inputs": {
+        "pitchInertia": {
+          "status": "known",
+          "value": 5000,
+          "unit": "kg*m^2",
+          "provenanceId": "c2-example-source"
+        },
+        "requestedAcceleration": {
+          "status": "known",
+          "value": 0.12,
+          "unit": "rad/s^2",
+          "provenanceId": "c2-example-source"
+        },
+        "competingMoment": {
+          "status": "known",
+          "value": -750,
+          "unit": "N*m",
+          "provenanceId": "c2-example-source"
+        },
+        "density": {
+          "status": "known",
+          "value": 1.225,
+          "unit": "kg/m^3",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "airspeed": {
+          "status": "known",
+          "value": 40,
+          "unit": "m/s",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "referenceArea": {
+          "status": "known",
+          "value": 16,
+          "unit": "m^2",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "referenceChord": {
+          "status": "known",
+          "value": 1.5,
+          "unit": "m",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "elevatorDerivative": {
+          "status": "known",
+          "value": -0.8,
+          "unit": "1/rad",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "elevatorAngle": {
+          "status": "known",
+          "value": -0.08726646259971647,
+          "unit": "rad",
+          "provenanceId": "c3-illustrative-source"
+        }
+      },
+      "result": {
+        "controls.demand": {
+          "valid": true,
+          "errors": [],
+          "values": {
+            "requiredMoment": {
+              "value": 1350,
+              "unit": "N*m"
+            }
+          }
+        },
+        "controls.effectiveness": {
+          "valid": true,
+          "errors": [],
+          "values": {
+            "dynamicPressure": {
+              "value": 980,
+              "unit": "Pa"
+            },
+            "deltaCm": {
+              "value": 0.06981317007977318,
+              "unit": "1"
+            },
+            "deltaMoment": {
+              "value": 1642.0057602762652,
+              "unit": "N*m"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "039bd81a-e0bd-4487-9e0c-9f435e2a5cd6",
+      "createdAt": "2026-09-17T03:59:38.940Z",
+      "record": {
+        "id": "c56f84d0-44af-47ec-81d0-ed0b0146e40d",
+        "revision": "23",
+        "model": {
+          "moduleId": "controls",
+          "modelId": "week07-controls-model",
+          "version": "1.0.0"
+        },
+        "modelText": "{\n  \"schemaVersion\": \"week07.student-model/v1\",\n  \"id\": \"week07-controls-model\",\n  \"version\": \"1.0.0\",\n  \"slots\": [\n    {\n      \"id\": \"controls.demand\",\n      \"expressions\": [\n        {\n          \"name\": \"requiredMoment\",\n          \"expression\": \"pitchInertia * requestedAcceleration - competingMoment\",\n          \"unit\": \"N*m\"\n        }\n      ]\n    },\n    {\n      \"id\": \"controls.effectiveness\",\n      \"expressions\": [\n        {\n          \"name\": \"dynamicPressure\",\n          \"expression\": \"0.5 * density * airspeed * airspeed\",\n          \"unit\": \"Pa\"\n        },\n        {\n          \"name\": \"deltaCm\",\n          \"expression\": \"elevatorDerivative * elevatorAngle\",\n          \"unit\": \"1\"\n        },\n        {\n          \"name\": \"deltaMoment\",\n          \"expression\": \"dynamicPressure * referenceArea * referenceChord * deltaCm\",\n          \"unit\": \"N*m\"\n        }\n      ]\n    }\n  ]\n}",
+        "modelHash": "fnv1a-be327008",
+        "fields": {
+          "question": {
+            "suppliedBy": "instructor",
+            "locked": true,
+            "text": "Calculate required control moment, elevator moment, and the change with airspeed. Explain whether the nominal response meets +0.12 rad/s²."
+          },
+          "system": {
+            "suppliedBy": "instructor",
+            "locked": true,
+            "text": "Illustrative planar pitch model. Aircraft geometry, integration, force conversion and constraints are supplied."
+          },
+          "representation": {
+            "suppliedBy": "instructor",
+            "locked": true,
+            "text": "Body axes forward/right/down. Positive pitch moment nose-up. Positive Fz downward. Positive elevator trailing edge down. Reference/CG X=0 m; tail X=-3 m."
+          },
+          "physics": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": "A downward force behind the CG pushes the tail down, causing the nose to rotate upward. Since the sign convention defines nose up moment as positive, this produces a positive pitch moment."
+          },
+          "assumptions": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": "One assumption is that the elevator response is linear, meaning the change in pitching moment is proportional to the elevator angle. This may not be true at large elevator angles or near stall because the airflow becomes nonlinear."
+          },
+          "inputs": {
+            "suppliedBy": "instructor",
+            "locked": true,
+            "text": "Iy=5000 kg·m²; target=+0.12 rad/s²; competing=-750 N-m; density=1.225 kg/m³; V=40 m/s; S=16 m²; chord=1.5 m; Cmδ=-0.8/rad; elevator=-5°. Inputs are illustrative, not calibrated."
+          },
+          "model": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": "The demand model states that the control moment plus the competing moment must equal the moment needed to achieve the target pitch acceleration. Dynamic pressure depends on air density and the square of airspeed, while the elevator moment depends on dynamic pressure, wing area, chord, elevator effectiveness, and elevator angle. All of these values are supplied, while the required control moment and actual elevator moment are the values that need to be calculated."
+          },
+          "prediction": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": "I predict the elevator moment will be positive, meaning nose up, because the negative elevator angle and negative elevator effectiveness produce a positive moment. If the airspeed is halved, the elevator moment should become on quarter as large because it depends on the square of airspeed. The competing moment is negative, so it produces a nose down moment that the elevator must overcome."
+          },
+          "execution": {
+            "suppliedBy": "automatic",
+            "locked": false,
+            "text": ""
+          },
+          "verification": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": ""
+          },
+          "claim": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": ""
+          },
+          "reflection": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": ""
+          },
+          "aiUse": {
+            "suppliedBy": "student",
+            "locked": false,
+            "text": ""
+          }
+        }
+      },
+      "prediction": "I predict the elevator moment will be positive, meaning nose up, because the negative elevator angle and negative elevator effectiveness produce a positive moment. If the airspeed is halved, the elevator moment should become on quarter as large because it depends on the square of airspeed. The competing moment is negative, so it produces a nose down moment that the elevator must overcome.",
+      "artifact": {
+        "schemaVersion": "week07.student-model/v1",
+        "id": "week07-controls-model",
+        "version": "1.0.0",
+        "slots": [
+          {
+            "id": "controls.demand",
+            "expressions": [
+              {
+                "name": "requiredMoment",
+                "expression": "pitchInertia * requestedAcceleration - competingMoment",
+                "unit": "N*m"
+              }
+            ]
+          },
+          {
+            "id": "controls.effectiveness",
+            "expressions": [
+              {
+                "name": "dynamicPressure",
+                "expression": "0.5 * density * airspeed * airspeed",
+                "unit": "Pa"
+              },
+              {
+                "name": "deltaCm",
+                "expression": "elevatorDerivative * elevatorAngle",
+                "unit": "1"
+              },
+              {
+                "name": "deltaMoment",
+                "expression": "dynamicPressure * referenceArea * referenceChord * deltaCm",
+                "unit": "N*m"
+              }
+            ]
+          }
+        ]
+      },
+      "inputs": {
+        "pitchInertia": {
+          "status": "known",
+          "value": 5000,
+          "unit": "kg*m^2",
+          "provenanceId": "c2-example-source"
+        },
+        "requestedAcceleration": {
+          "status": "known",
+          "value": 0.12,
+          "unit": "rad/s^2",
+          "provenanceId": "c2-example-source"
+        },
+        "competingMoment": {
+          "status": "known",
+          "value": -750,
+          "unit": "N*m",
+          "provenanceId": "c2-example-source"
+        },
+        "density": {
+          "status": "known",
+          "value": 1.225,
+          "unit": "kg/m^3",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "airspeed": {
+          "status": "known",
+          "value": 40,
+          "unit": "m/s",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "referenceArea": {
+          "status": "known",
+          "value": 16,
+          "unit": "m^2",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "referenceChord": {
+          "status": "known",
+          "value": 1.5,
+          "unit": "m",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "elevatorDerivative": {
+          "status": "known",
+          "value": -0.8,
+          "unit": "1/rad",
+          "provenanceId": "c3-illustrative-source"
+        },
+        "elevatorAngle": {
+          "status": "known",
+          "value": -0.08726646259971647,
+          "unit": "rad",
+          "provenanceId": "c3-illustrative-source"
+        }
+      },
+      "result": {
+        "controls.demand": {
+          "valid": true,
+          "errors": [],
+          "values": {
+            "requiredMoment": {
+              "value": 1350,
+              "unit": "N*m"
+            }
+          }
+        },
+        "controls.effectiveness": {
+          "valid": true,
+          "errors": [],
+          "values": {
+            "dynamicPressure": {
+              "value": 980,
+              "unit": "Pa"
+            },
+            "deltaCm": {
+              "value": 0.06981317007977318,
+              "unit": "1"
+            },
+            "deltaMoment": {
+              "value": 1642.0057602762652,
+              "unit": "N*m"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "verification": {
+    "modelHash": "fnv1a-be327008",
+    "checkedAt": "2026-09-17T03:59:37.012Z",
+    "passed": true,
+    "detail": "Student artifact passed demand, baseline elevator, quadratic speed, and neutral-deflection checks."
+  }
 }
