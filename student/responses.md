@@ -8,11 +8,11 @@ Answers and recorded model results from `submission.json`. This document does no
 
 - Record ID: c56f84d0-44af-47ec-81d0-ed0b0146e40d
 
-- Record revision: 6
+- Record revision: 9
 
 - Model hash: fnv1a-adee3cf8
 
-- Readiness: Marked incomplete or not ready; missing: assumptions, model, prediction, verification, claim, reflection, aiUse, execution
+- Readiness: Marked incomplete or not ready; missing: prediction, verification, claim, reflection, aiUse, execution
 
 ## Supplied setup (instructor supplied)
 
@@ -42,13 +42,17 @@ A downward force behind the CG pushes the tail down, causing the nose to rotate 
 **Prompt:** Explain one supplied assumption and what could invalidate it: planar motion, fixed reference, local linear effectiveness, no trim or damping.
 
 **Student response:**
-_Missing — no response supplied._
+```
+One assumption is that the elevator response is linear, meaning the change in pitching moment is proportional to the elevator angle. This may not be true at large elevator angles or near stall because the airflow becomes nonlinear.
+```
 
 ### model
 **Prompt:** Write your demand, dynamic-pressure, coefficient and moment equations. Identify which quantities are supplied and which are unknown.
 
 **Student response:**
-_Missing — no response supplied._
+```
+The demand model states that the control moment plus the competing moment must equal the moment needed to achieve the target pitch acceleration. Dynamic pressure depends on air density and the square of airspeed, while the elevator moment depends on dynamic pressure, wing area, chord, elevator effectiveness, and elevator angle. All of these values are supplied, while the required control moment and actual elevator moment are the values that need to be calculated.
+```
 
 ### prediction
 **Prompt:** Before running your own implementation, predict the sign of its elevator moment and the effect of halving airspeed. Explain the competing moment.

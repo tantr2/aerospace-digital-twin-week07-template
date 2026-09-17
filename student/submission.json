@@ -3,8 +3,6 @@
   "readiness": {
     "ready": false,
     "missing": [
-      "assumptions",
-      "model",
       "prediction",
       "verification",
       "claim",
@@ -15,7 +13,7 @@
   },
   "record": {
     "id": "c56f84d0-44af-47ec-81d0-ed0b0146e40d",
-    "revision": "6",
+    "revision": "9",
     "model": {
       "moduleId": "controls",
       "modelId": "week07-student-model",
@@ -47,7 +45,7 @@
       "assumptions": {
         "suppliedBy": "student",
         "locked": false,
-        "text": ""
+        "text": "One assumption is that the elevator response is linear, meaning the change in pitching moment is proportional to the elevator angle. This may not be true at large elevator angles or near stall because the airflow becomes nonlinear."
       },
       "inputs": {
         "suppliedBy": "instructor",
@@ -57,7 +55,7 @@
       "model": {
         "suppliedBy": "student",
         "locked": false,
-        "text": ""
+        "text": "The demand model states that the control moment plus the competing moment must equal the moment needed to achieve the target pitch acceleration. Dynamic pressure depends on air density and the square of airspeed, while the elevator moment depends on dynamic pressure, wing area, chord, elevator effectiveness, and elevator angle. All of these values are supplied, while the required control moment and actual elevator moment are the values that need to be calculated."
       },
       "prediction": {
         "suppliedBy": "student",
